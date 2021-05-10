@@ -1,0 +1,35 @@
+<h1>ViaSat Sales</h1>
+<p>
+  This is an exercise to assess the candidate's readiness.
+  It involves transforming a list of items into a receipt including taxes and grand total.
+  In a real project, instead of a hard coded list there would be a form in which to enter the data of the goods to be purchased in order to correctly process the receipt.
+  For example, to understand if the product is exempt from taxes, through a droplist, it would be possible to select the category of the good and from here understand how to tax it.
+</p>
+<h3>Product sales list:</h3>
+<li *ngFor="let good of goods">{{ good.quantity }} {{ good.name }} at {{ good.price }}</li>
+
+<h3>Receipt Data:</h3>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="goods">
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Good</th>
+      <th>Imported</th>
+      <th>Tax</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let good of goods">
+      <td>{{ good.quantity }}</td>
+      <td>{{ good.name }}</td>
+      <td>{{ good.isImported }}</td>
+      <td>{{ good.tax }}</td>
+      <td>{{ good.total }}</td>
+    </tr>
+  </tbody>
+</table>
+<ul>Tax total: {{ taxTotal }}</ul>
+<ul>Goods total: {{ goodsTotal }}</ul>
+<button class="btn btn-primary" (click)="loadList()">New Receipt</button>
